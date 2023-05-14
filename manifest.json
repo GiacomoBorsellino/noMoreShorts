@@ -1,0 +1,11 @@
+{
+    "name": "You Short no pass!",
+    "version": "1.0.0",
+    "description": "Little chrome extension made to hide the shorts from subscriptions on Youtube",
+    "manifest_version": 3,
+    "author": "Giacomo Borsellino",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "You Short no pass!"
+    }
+}
