@@ -1,5 +1,17 @@
+// Run Script
+function runSwitcher() {
+  if (window.location.href.includes("youtube.com/feed/subscriptions")) {
+    console.log('In subscription - Script enabled');
+    createSwitch();
+  } else {
+    console.log('In other page - Script disabled');
+  }
+}
+
 // Create switch
-if (window.location.href.includes("youtube.com/feed/subscriptions")) {
+function createSwitch() {
+  console.log('in func');
+  // Create switch
   const div = document.createElement('div');
   div.id = 'shadow-short';
   div.innerHTML = `
@@ -79,39 +91,40 @@ if (window.location.href.includes("youtube.com/feed/subscriptions")) {
     </body>
     </html></div>`;
   document.getElementById('title-container').appendChild(div);
-  
-  // Use switch
-  function shadowingShort() {
-    // Get the checkbox
-    var checkBox = document.getElementById("input-shadow-short");
-  
-    // If the checkbox is checked
-    if (checkBox.checked == true){
-      console.log('Hide the shorts');
-      localStorage.setItem('shadow-short', 'true')
-  
-      let videos = document.body.getElementsByTagName("ytd-grid-video-renderer");
-      setInterval(() => {
-        for(let i = 0; i < videos.length; i++) {
-            if (videos[i].getElementsByTagName('a')[0].href.includes('short')) {
-              videos[i].style.display = 'none';   
-            }
-        }
-      }, 500)
-  
-    } else {
-      console.log('Show the shorts');
-      localStorage.setItem('shadow-short', 'false')
-  
-      let videos = document.body.getElementsByTagName("ytd-grid-video-renderer");
-  
-      setInterval(() => {
-        for(let i = 0; i < videos.length; i++) {
-            if (videos[i].getElementsByTagName('a')[0].href.includes('short')) {
-              videos[i].style.display = 'block';   
-            }
-        }
-      }, 500)
-    }
+};
+
+// Use switch
+function shadowingShort() {
+  // Get the checkbox
+  var checkBox = document.getElementById("input-shadow-short");
+
+  // If the checkbox is checked
+  if (checkBox.checked == true){
+    console.log('Hide the shorts');
+    localStorage.setItem('shadow-short', 'true')
+
+    let videos = document.body.getElementsByTagName("ytd-grid-video-renderer");
+    setInterval(() => {
+      for(let i = 0; i < videos.length; i++) {
+          if (videos[i].getElementsByTagName('a')[0].href.includes('short')) {
+            videos[i].style.display = 'none';   
+          }
+      }
+    }, 500)
+
+  } else {
+    console.log('Show the shorts');
+    localStorage.setItem('shadow-short', 'false')
+
+    let videos = document.body.getElementsByTagName("ytd-grid-video-renderer");
+
+    setInterval(() => {
+      for(let i = 0; i < videos.length; i++) {
+          if (videos[i].getElementsByTagName('a')[0].href.includes('short')) {
+            videos[i].style.display = 'block';   
+          }
+      }
+    }, 500)
   }
 }
+
