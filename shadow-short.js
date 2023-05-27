@@ -2,7 +2,6 @@
 function runSwitcher() {
   if (window.location.href.includes("youtube.com/feed/subscriptions")) {
     console.log('In subscription - Script enabled');
-    createSwitch();
   } else {
     console.log('In other page - Script disabled');
   }
